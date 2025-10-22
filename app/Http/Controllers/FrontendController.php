@@ -10,4 +10,9 @@ class FrontendController extends Controller
     {
         return view('frontend.index');
     }
+
+    public function adminLogin()
+    {
+        return view('backend.auth.admin-login');
+    }
 }
