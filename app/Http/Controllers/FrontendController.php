@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -14,5 +15,12 @@ class FrontendController extends Controller
     public function adminLogin()
     {
         return view('backend.auth.admin-login');
+    }
+
+    public function adminLogout()
+    {
+        Auth::logout();
+
+        return redirect('/admin/login');
     }
 }
