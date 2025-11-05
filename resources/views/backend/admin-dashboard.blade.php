@@ -430,7 +430,7 @@
                     <!--end::Row-->
                   </div>
                 </div>
-              </div>
+              </div>z
               <!-- /.Start col -->
             </div>
             <!-- /.row (main row) -->

@@ -19,7 +19,7 @@
       <!--end::Sidebar-->
       <!--begin::App Main-->
       <main class="app-main">
-       @yield('conntent')
+       @yield('content')
       </main>
       <!--end::App Main-->
       <!--begin::Footer-->
