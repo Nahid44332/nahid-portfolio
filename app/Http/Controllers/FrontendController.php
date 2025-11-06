@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HeroSection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,7 +10,9 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $herosection = HeroSection::first();
+
+        return view('frontend.index', compact('herosection'));
     }
 
     public function adminLogin()

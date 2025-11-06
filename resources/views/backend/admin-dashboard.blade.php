@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('conntent')
+@section('content')
  <!--begin::App Content Header-->
         <div class="app-content-header">
           <!--begin::Container-->

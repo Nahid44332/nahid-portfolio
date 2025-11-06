@@ -5,7 +5,7 @@
     <h2 class="mb-4">Hero Section</h2>
 
     <!-- Add Hero Button -->
-    <button class="btn btn-success mb-4" data-bs-toggle="modal" data-bs-target="#heroModal">Add Hero</button>
+    <button class="btn btn-success mb-4" data-bs-toggle="modal" data-bs-target="#heroModal">Update Hero Section</button>
 
     <!-- Hero Card -->
    <div class="container my-5 d-flex justify-content-center">
@@ -13,23 +13,23 @@
         <div class="row g-0 align-items-center">
             <!-- Image Section -->
             <div class="col-md-5">
-                <img id="cardImage" src="{{ asset('frontend/img/profile.png') }}" class="img-fluid h-100 object-fit-cover" alt="Profile Image">
+                <img id="cardImage" src="{{ asset('backend/images/profile/'.$herosection->image) }}" class="img-fluid h-100 object-fit-cover" alt="Profile Image">
             </div>
 
             <!-- Content Section -->
             <div class="col-md-7">
                 <div class="card-body p-5">
                     <h5 class="text-primary fw-bold mb-2" id="cardRole">I'm</h5>
-                    <h1 class="display-5 fw-bold mb-3" id="cardName">Kate Winslet</h1>
-                    <h2 class="typed-text-output d-inline fw-normal text-muted" id="cardTypedText">Web Designer, Web Developer</h2>
+                    <h1 class="display-5 fw-bold mb-3" id="cardName">{{$herosection->name}}</h1>
+                    <h2 class="typed-text-output d-inline fw-normal text-muted" id="cardTypedText">{{$herosection->typed_texts}}</h2>
 
                     <p class="mt-3 text-secondary">
                         Passionate about creating beautiful and responsive web & app designs. Experienced in Front-End Development and modern web technologies.
                     </p>
 
                     <div class="mt-4 d-flex align-items-center gap-3">
-                        <a href="#" id="cardCV" class="btn btn-primary py-2 px-4">Download CV</a>
-                        <a href="#" type="button" class="btn btn-outline-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#videoModal">Play Video</a>
+                        <a href="{{asset('backend/file/cv/'.$herosection->cv)}}" target="_blank" id="cardCV" class="btn btn-primary py-2 px-4">Open CV</a>
+                        <a href="{{$herosection->video_link}}" type="button" class="btn btn-outline-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#videoModal">Play Video</a>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,6 @@
                     <div class="mb-3">
                         <label>Profile Image</label>
                         <input type="file" name="image" id="image" class="form-control">
-                        <img id="previewImage" src="#" class="mt-2" style="width:100px; display:none;">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -80,18 +79,38 @@
     </div>
 </div>
 
-<!-- Video Modal -->
+@php
+    $link = $herosection->video_link;
+
+    if (preg_match('/youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/', $link, $matches)) {
+        $videoId = $matches[1];
+        $embed = "https://www.youtube.com/embed/{$videoId}";
+    } 
+    elseif (preg_match('/youtu\.be\/([a-zA-Z0-9_-]+)/', $link, $matches)) {
+        $videoId = $matches[1];
+        $embed = "https://www.youtube.com/embed/{$videoId}";
+    } 
+    else {
+        $embed = '';
+    }
+@endphp
+
 <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body p-0">
                 <div class="ratio ratio-16x9">
-                    <iframe id="videoFrame" src="" title="Video" allowfullscreen></iframe>
+                    @if($embed)
+                        <iframe id="videoFrame" src="{{ $embed }}" title="Video" allowfullscreen></iframe>
+                    @else
+                        <p class="text-center text-danger p-3">Invalid YouTube Link</p>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <script>
 // Image Preview
