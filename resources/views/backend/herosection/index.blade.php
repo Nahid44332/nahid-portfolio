@@ -41,33 +41,34 @@
 <!-- Add Hero Modal -->
 <div class="modal fade" id="heroModal" tabindex="-1" aria-labelledby="heroModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <form action="{{url('/admin/hero-section/store')}}" id="heroForm" method="POST" enctype="multipart/form-data">
+        <form action="{{url('/admin/hero-section/update')}}" id="heroForm" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="heroModalLabel">Add / Update Hero</h5>
+                    <h5 class="modal-title" id="heroModalLabel">Update Hero Section</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
                         <label>Name</label>
-                        <input type="text" name="name" id="name" class="form-control" required>
+                        <input type="text" name="name" id="name" value="{{$herosection->name}}" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label>Typed Text (comma separated)</label>
-                        <input type="text" name="typed_texts" id="typed_text" class="form-control" required>
+                        <input type="text" name="typed_texts" id="typed_text" value="{{$herosection->typed_texts}}" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label>Video Link (YouTube)</label>
-                        <input type="text" name="video_link" id="video_link" class="form-control">
+                        <input type="text" name="video_link" id="video_link" value="{{$herosection->video_link}}" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label>Upload CV</label>
-                        <input type="file" name="cv" id="cv" class="form-control">
+                        <input type="file" name="cv" id="cv" value="{{$herosection->cv}}" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label>Profile Image</label>
                         <input type="file" name="image" id="image" class="form-control">
+                        <img src="{{ asset('backend/images/profile/'.$herosection->image) }}" class="mt-4" alt="" height="150" width="150">
                     </div>
                 </div>
                 <div class="modal-footer">

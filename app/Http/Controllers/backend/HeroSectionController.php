@@ -19,28 +19,39 @@ class HeroSectionController extends Controller
         return view('backend.herosection.index', compact('herosection'));
     }
 
-    public function heroSectionStore(Request $request)
+    public function heroSectionUpdate(Request $request)
     {
-        $herosection = new HeroSection();
+        $herosection = HeroSection::first();
 
         $herosection->name = $request->name;
         $herosection->typed_texts = $request->typed_texts;
         $herosection->video_link = $request->video_link;
 
-        if (isset($request->cv)) {
-            $imageName = rand() . '-cv-' . '.' . $request->cv->extension();
-            $request->cv->move('backend/file/cv/', $imageName);
-            $herosection->cv = $imageName;
-        }
+         if(isset($request->cv)){
 
-        if (isset($request->image)) {
-            $imageName = rand() . '-profile-' . '.' . $request->image->extension();
+            if($herosection->cv && file_exists('backend/file/cv/'.$herosection->cv)){
+                unlink('backend/file/cv/'.$herosection->cv);
+            }
+
+            $cvName = rand().'-cv'.'.'.$request->cv->extension();
+            $request->cv->move('backend/file/cv/', $cvName);
+
+            $herosection->cv = $cvName;
+        }
+         if(isset($request->image)){
+
+            if($herosection->image && file_exists('backend/images/profile/'.$herosection->image)){
+                unlink('backend/images/profile/'.$herosection->image);
+            }
+
+            $imageName = rand().'-profile-'.'.'.$request->image->extension();
             $request->image->move('backend/images/profile/', $imageName);
+
             $herosection->image = $imageName;
         }
 
         $herosection->save();
-        toastr()->success('Your Data Submitted');
+        toastr()->success('Personel Info Updated');
         return redirect()->back();
     }
 }

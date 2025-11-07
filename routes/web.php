@@ -15,4 +15,4 @@ Auth::routes();
 
 Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard']);
 Route::get('/admin/hero-section', [HeroSectionController::class, 'heroSection']);
-Route::post('/admin/hero-section/store', [HeroSectionController::class, 'heroSectionStore']);
+Route::post('/admin/hero-section/update', [HeroSectionController::class, 'heroSectionUpdate']);
