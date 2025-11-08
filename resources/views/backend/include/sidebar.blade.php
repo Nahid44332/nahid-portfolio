@@ -31,6 +31,12 @@
                          <p>Hero Section</p>
                      </a>
                  </li>
+                 <li class="nav-item">
+                     <a href="{{url('/admin/about-us')}}" class="nav-link">
+                         <i class="nav-icon bi bi-palette"></i>
+                         <p>About Us</p>
+                     </a>
+                 </li>
              </ul>
              <!--end::Sidebar Menu-->
          </nav>

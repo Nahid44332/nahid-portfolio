@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\AboutUsControlller;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\HeroSectionController;
 use App\Http\Controllers\FrontendController;
@@ -16,3 +17,7 @@ Auth::routes();
 Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard']);
 Route::get('/admin/hero-section', [HeroSectionController::class, 'heroSection']);
 Route::post('/admin/hero-section/update', [HeroSectionController::class, 'heroSectionUpdate']);
+
+//About Us Route...
+Route::get('/admin/about-us', [AboutUsControlller::class, 'abooutUs']);
+Route::post('/admin/about/store', [AboutUsControlller::class, 'store']);
