@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\Education;
+use App\Models\Experience;
 use App\Models\HeroSection;
+use App\Models\Service;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +17,11 @@ class FrontendController extends Controller
     {
         $herosection = HeroSection::first();
         $abouts = AboutUs::first();
-        return view('frontend.index', compact('herosection', 'abouts'));
+        $skills = Skill::all();
+        $experiences = Experience::all();
+        $educations = Education::all();
+        $services = Service::all();
+        return view('frontend.index', compact('herosection', 'abouts', 'skills', 'experiences', 'educations', 'services'));
     }
 
     public function adminLogin()
