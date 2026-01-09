@@ -49,6 +49,12 @@
                          <p>Services</p>
                      </a>
                  </li>
+                 <li class="nav-item">
+                     <a href="{{url('/admin/project')}}" class="nav-link">
+                         <i class="nav-icon bi bi-palette"></i>
+                         <p>Project</p>
+                     </a>
+                 </li>
              </ul>
              <!--end::Sidebar Menu-->
          </nav>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\backend\AboutUsControlller;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\HeroSectionController;
+use App\Http\Controllers\backend\ProjectController;
 use App\Http\Controllers\backend\ServiceController;
 use App\Http\Controllers\backend\SkillExperienceController;
 use App\Http\Controllers\FrontendController;
@@ -33,3 +34,7 @@ Route::delete('/backend/skill-experience/delete/{type}/{id}', [SkillExperienceCo
 Route::get('/admin/services', [ServiceController::class, 'manage'])->name('admin.services');
 Route::post('/admin/services/store', [ServiceController::class, 'store'])->name('admin.services.store');
 Route::delete('/admin/services/{id}', [ServiceController::class, 'destroy'])->name('admin.services.delete');
+
+//Project Route....
+Route::get('/admin/project', [ProjectController::class, 'Project']);
+Route::post('/admin/project/store', [ProjectController::class, 'ProjectStore']); 
