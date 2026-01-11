@@ -36,7 +36,46 @@ class ProjectController extends Controller
 
         $projects->save();
 
-        return redirect()->back()->with('success','Project Added Successfully');
+        return redirect()->back()->with('success', 'Project Added Successfully');
+    }
 
+    public function update(Request $request, $id)
+    {
+        $project = Project::findOrFail($id);
+
+        $data = [
+            'title'    => $request->title,
+            'category' => $request->category,
+            'link'     => $request->link,
+        ];
+
+        if ($request->hasFile('image')) {
+            if ($project->image && file_exists(public_path('backend/images/projects/' . $project->image))) {
+                unlink(public_path('backend/images/projects/' . $project->image));
+            }
+
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('backend/images/projects'), $imageName);
+
+            $data['image'] = $imageName;
+        }
+
+        $project->update($data);
+
+        return redirect()->back()->with('success', 'Project Updated Successfully');
+    }
+
+    public function destroy($id)
+    {
+        $project = Project::findOrFail($id);
+
+        if ($project->image && file_exists(public_path('backend/images/projects/' . $project->image))) {
+            unlink(public_path('backend/images/projects/' . $project->image));
+        }
+
+        $project->delete();
+
+        return redirect()->back()->with('success', 'Project Deleted Successfully');
     }
 }

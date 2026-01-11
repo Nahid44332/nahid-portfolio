@@ -37,4 +37,6 @@ Route::delete('/admin/services/{id}', [ServiceController::class, 'destroy'])->na
 
 //Project Route....
 Route::get('/admin/project', [ProjectController::class, 'Project']);
-Route::post('/admin/project/store', [ProjectController::class, 'ProjectStore']); 
+Route::post('/admin/project/store', [ProjectController::class, 'ProjectStore']);
+Route::post('/admin/project/update/{id}', [ProjectController::class, 'update']);
+Route::get('/admin/project/delete/{id}', [ProjectController::class, 'destroy']);

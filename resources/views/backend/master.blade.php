@@ -32,4 +32,5 @@
     <!--end::Script-->
   </body>
   <!--end::Body-->
+  @stack('script')
 </html>

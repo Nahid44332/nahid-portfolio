@@ -152,7 +152,7 @@
                         </div>
                         <h3 class="lh-base mb-0">{{ $abouts->title }}</h3>
                     </div>
-                    <p class="mb-4">{{$abouts->description}}</p>
+                    <p class="mb-4">{{ $abouts->description }}</p>
                     @foreach ($abouts->features as $feature)
                         <p class="mb-3">
                             <i class="far fa-check-circle text-primary me-3"></i>{{ $feature }}
@@ -163,24 +163,29 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="row g-3 mb-4">
                         <div class="col-sm-6">
-                            <img class="img-fluid rounded" src="{{ asset('backend/images/about/'.$abouts->image_one) }}"
-                                alt="">
+                            <img class="img-fluid rounded"
+                                src="{{ asset('backend/images/about/' . $abouts->image_one) }}" alt="">
                         </div>
                         <div class="col-sm-6">
-                            <img class="img-fluid rounded" src="{{ asset('backend/images/about/'.$abouts->image_two) }}"
-                                alt="">
+                            <img class="img-fluid rounded"
+                                src="{{ asset('backend/images/about/' . $abouts->image_two) }}" alt="">
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-3">
                         <h5 class="border-end pe-3 me-3 mb-0">Happy Clients</h5>
-                        <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">{{$abouts->happy_clients}}</h2>
+                        <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">{{ $abouts->happy_clients }}
+                        </h2>
                     </div>
-                    <p class="mb-4">We take pride in delivering high-quality work that satisfies our clients. Over the years, we’ve built strong relationships and earned the trust of hundreds of happy customers worldwide.</p>
+                    <p class="mb-4">We take pride in delivering high-quality work that satisfies our clients. Over
+                        the years, we’ve built strong relationships and earned the trust of hundreds of happy customers
+                        worldwide.</p>
                     <div class="d-flex align-items-center mb-3">
                         <h5 class="border-end pe-3 me-3 mb-0">Projects Completed</h5>
-                        <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">{{$abouts->projects_completed}}</h2>
+                        <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">
+                            {{ $abouts->projects_completed }}</h2>
                     </div>
-                    <p class="mb-0">Our dedicated team has successfully completed numerous projects with precision and care — each one a step toward excellence and innovation in web development.</p>
+                    <p class="mb-0">Our dedicated team has successfully completed numerous projects with precision
+                        and care — each one a step toward excellence and innovation in web development.</p>
                 </div>
             </div>
         </div>
@@ -190,85 +195,90 @@
 
     <!-- Expertise Start -->
     <div class="container-xxl py-6 pb-5" id="skill">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="display-5 mb-5">Skills & Experience</h1>
-                <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum clita dolor duo clita sit.</p>
-                <h3 class="mb-4">My Skills</h3>
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        @foreach($skills->slice(0, ceil($skills->count()/2)) as $skill)
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">{{ $skill->name }}</h6>
-                                    <h6 class="font-weight-bold">{{ $skill->percentage }}%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{ $skill->percentage }}"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: {{ $skill->percentage }}%;"></div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="col-md-6">
-                        @foreach($skills->slice(ceil($skills->count()/2)) as $skill)
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">{{ $skill->name }}</h6>
-                                    <h6 class="font-weight-bold">{{ $skill->percentage }}%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{ $skill->percentage }}"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: {{ $skill->percentage }}%;"></div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
-                    <li class="nav-item w-50">
-                        <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill" href="#tab-1">Experience</button>
-                    </li>
-                    <li class="nav-item w-50">
-                        <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill" href="#tab-2">Education</button>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row gy-5 gx-4">
-                            @foreach($experiences as $exp)
-                                <div class="col-sm-6">
-                                    <h5>{{ $exp->title }}</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">{{ $exp->year_from }} - {{ $exp->year_to }}</p>
-                                    <h6 class="mb-0">{{ $exp->company }}</h6>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="display-5 mb-5">Skills & Experience</h1>
+                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam
+                        rebum amet diam ipsum clita dolor duo clita sit.</p>
+                    <h3 class="mb-4">My Skills</h3>
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            @foreach ($skills->slice(0, ceil($skills->count() / 2)) as $skill)
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">{{ $skill->name }}</h6>
+                                        <h6 class="font-weight-bold">{{ $skill->percentage }}%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar"
+                                            aria-valuenow="{{ $skill->percentage }}" aria-valuemin="0"
+                                            aria-valuemax="100" style="width: {{ $skill->percentage }}%;"></div>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
-                    </div>
-
-                    <div id="tab-2" class="tab-pane fade show p-0">
-                        <div class="row gy-5 gx-4">
-                            @foreach($educations as $edu)
-                                <div class="col-sm-6">
-                                    <h5>{{ $edu->title }}</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">{{ $edu->year_from }} - {{ $edu->year_to }}</p>
-                                    <h6 class="mb-0">{{ $edu->institution }}</h6>
+                        <div class="col-md-6">
+                            @foreach ($skills->slice(ceil($skills->count() / 2)) as $skill)
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">{{ $skill->name }}</h6>
+                                        <h6 class="font-weight-bold">{{ $skill->percentage }}%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar"
+                                            aria-valuenow="{{ $skill->percentage }}" aria-valuemin="0"
+                                            aria-valuemax="100" style="width: {{ $skill->percentage }}%;"></div>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
+                        <li class="nav-item w-50">
+                            <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill"
+                                href="#tab-1">Experience</button>
+                        </li>
+                        <li class="nav-item w-50">
+                            <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill"
+                                href="#tab-2">Education</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row gy-5 gx-4">
+                                @foreach ($experiences as $exp)
+                                    <div class="col-sm-6">
+                                        <h5>{{ $exp->title }}</h5>
+                                        <hr class="text-primary my-2">
+                                        <p class="text-primary mb-1">{{ $exp->year_from }} - {{ $exp->year_to }}</p>
+                                        <h6 class="mb-0">{{ $exp->company }}</h6>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div id="tab-2" class="tab-pane fade show p-0">
+                            <div class="row gy-5 gx-4">
+                                @foreach ($educations as $edu)
+                                    <div class="col-sm-6">
+                                        <h5>{{ $edu->title }}</h5>
+                                        <hr class="text-primary my-2">
+                                        <p class="text-primary mb-1">{{ $edu->year_from }} - {{ $edu->year_to }}</p>
+                                        <h6 class="mb-0">{{ $edu->institution }}</h6>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Expertise End -->
 
@@ -287,17 +297,18 @@
             <div class="row g-4">
                 @foreach ($services as $service)
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
-                        <div class="bg-icon flex-shrink-0 mb-3">
-                             <i class="{{ $service->icon }} fa-2x text-dark"></i>
-                        </div>  
-                        <div class="ms-sm-4">
-                            <h4 class="mb-3">{{$service->title}}</h4>
-                            <h6 class="mb-3">Start from <span class="text-primary">${{$service->price}}</span></h6>
-                            <span>{{$service->description}}</span>
+                        <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
+                            <div class="bg-icon flex-shrink-0 mb-3">
+                                <i class="{{ $service->icon }} fa-2x text-dark"></i>
+                            </div>
+                            <div class="ms-sm-4">
+                                <h4 class="mb-3">{{ $service->title }}</h4>
+                                <h6 class="mb-3">Start from <span
+                                        class="text-primary">${{ $service->price }}</span></h6>
+                                <span>{{ $service->description }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -320,81 +331,27 @@
                     </ul>
                 </div>
             </div>
-            <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.1s">
-                <div class="col-lg-4 col-md-6 portfolio-item first">
-                    <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('frontend/img/project-1.jpg') }}" alt="">
-                        <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                                href="{{ asset('frontend/img/project-1.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
-                                    class="fa fa-link"></i></a>
+            <div class="row g-4 portfolio-container">
+                @foreach ($projects as $project)
+                    <div class="col-lg-4 col-md-6 portfolio-item {{ $project->category }}">
+                        <div class="portfolio-img rounded overflow-hidden"> <img class="img-fluid"
+                                src="{{ asset('backend/images/projects/' . $project->image) }}"
+                                alt="{{ $project->title }}">
+                            <div class="portfolio-btn"> <a
+                                    class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
+                                    href="{{ asset('backend/images/projects/' . $project->image) }}"
+                                    data-lightbox="portfolio"> <i class="fa fa-eye"></i> </a> <a
+                                    class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
+                                    href="{{ $project->link }}" target="_blank"> <i class="fa fa-link"></i> </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item second">
-                    <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('frontend/img/project-2.jpg') }}" alt="">
-                        <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                                href="{{ asset('frontend/img/project-2.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
-                                    class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item first">
-                    <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('frontend/img/project-3.jpg') }}" alt="">
-                        <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                                href="{{ asset('frontend/img/project-3.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
-                                    class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item second">
-                    <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('frontend/img/project-4.jpg') }}" alt="">
-                        <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                                href="{{ asset('frontend/img/project-4.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
-                                    class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item first">
-                    <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('frontend/img/project-5.jpg') }}" alt="">
-                        <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                                href="{{ asset('frontend/img/project-5.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
-                                    class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item second">
-                    <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('frontend/img/project-6.jpg') }}" alt="">
-                        <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                                href="{{ asset('frontend/img/project-6.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
-                                    class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
     <!-- Projects End -->
 

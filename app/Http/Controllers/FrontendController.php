@@ -6,6 +6,7 @@ use App\Models\AboutUs;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\HeroSection;
+use App\Models\Project;
 use App\Models\Service;
 use App\Models\Skill;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class FrontendController extends Controller
         $experiences = Experience::all();
         $educations = Education::all();
         $services = Service::all();
-        return view('frontend.index', compact('herosection', 'abouts', 'skills', 'experiences', 'educations', 'services'));
+        $projects = Project::get();
+        return view('frontend.index', compact('herosection', 'abouts', 'skills', 'experiences', 'educations', 'services', 'projects'));
     }
 
     public function adminLogin()
